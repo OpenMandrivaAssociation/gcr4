@@ -108,7 +108,7 @@ Conflicts:	%{_lib}-gnome-keyring-devel < 2.29.4
 Thi package contains the development files and headers for %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -n gcr-%{version} -p1
 
 %build
 
