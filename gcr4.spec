@@ -145,7 +145,7 @@ Thi package contains the development files and headers for %{name}.
 %{_libdir}/girepository-1.0/Gck-%{api_gck}.typelib
 
 %files -n %{libnamebase}
-%{_libdir}/libgcr-base-%{api_gcr}.so.%{major_gcr}*
+#{_libdir}/libgcr-base-%{api_gcr}.so.%{major_gcr}*
 
 %files -n %{libnameui}
 %{_libdir}/libgcr-ui-%{api_gcr}.so.%{major_gcr}*
