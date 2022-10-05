@@ -3,9 +3,9 @@
 %define _disable_rebuild_configure 1
 
 %define major_gck   0
-%define api_gck     1
-%define major_gcr   1
-%define api_gcr     3
+%define api_gck     2
+%define major_gcr   0
+%define api_gcr     4
 %define libname		%mklibname gcr %{api_gcr} %{major_gcr}
 %define libnamebase	%mklibname gcr-base %{api_gcr} %{major_gcr}
 %define libnameui	%mklibname gcr-ui %{api_gcr} %{major_gcr}
