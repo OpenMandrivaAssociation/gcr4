@@ -119,9 +119,9 @@ Thi package contains the development files and headers for %{name}.
 %install
 %meson_install
 
-%find_lang %{name}
+%find_lang gcr-4
 
-%files -f %{name}.lang
+%files -f gcr-4.lang
 %doc README.md NEWS
 %{_bindir}/gcr-viewer
 %{_libexecdir}/gcr-prompter
