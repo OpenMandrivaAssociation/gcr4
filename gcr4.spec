@@ -15,14 +15,13 @@
 %define devname	%mklibname -d gcr 
 
 Summary:	A library for bits of crypto UI and parsing
-Name:		gcr
-Version:	3.41.1
-Release:	2
+Name:		gcr4
+Version:	3.92.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-Source10:	%{name}.rpmlintrc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcr/%{url_ver}/gcr-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:	intltool
@@ -32,7 +31,7 @@ BuildRequires:	gnupg2
 BuildRequires:  ssh-clients
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(p11-kit-1)
 BuildRequires:	pkgconfig(libtasn1)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -120,7 +119,14 @@ Thi package contains the development files and headers for %{name}.
 %install
 %meson_install
 
-#rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
+%post
+%systemd_user_post gcr4-ssh-agent.service
+
+%preun
+%systemd_user_preun gcr4-ssh-agent.service
+
+%postun
+%systemd_user_postun_with_restart gcr4-ssh-agent.service
 
 %find_lang %{name}
 
