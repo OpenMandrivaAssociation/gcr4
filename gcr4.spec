@@ -119,15 +119,6 @@ Thi package contains the development files and headers for %{name}.
 %install
 %meson_install
 
-%post
-%systemd_user_post gcr4-ssh-agent.service
-
-%preun
-%systemd_user_preun gcr4-ssh-agent.service
-
-%postun
-%systemd_user_postun_with_restart gcr4-ssh-agent.service
-
 %find_lang %{name}
 
 %files -f %{name}.lang
