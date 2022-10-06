@@ -110,6 +110,7 @@ Thi package contains the development files and headers for %{name}.
 %doc %{_datadir}/doc/gck*
 %doc %{_datadir}/doc/gcr*
 %{_libdir}/libgck-%{api_gck}.so
+%{_libdir}/libgcr-%{api_gcr}.so
 %{_includedir}/gck-%{api_gck}
 %{_includedir}/gcr-%{api_gcr}
 %{_libdir}/pkgconfig/gck-%{api_gck}.pc
