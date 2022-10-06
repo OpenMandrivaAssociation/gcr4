@@ -41,6 +41,8 @@ BuildRequires:	xsltproc
 BuildRequires:	vala-devel
 #Conflicts:	gnome-keyring < 3.3.1
 
+Requires: %{libname} = %{version}-%{release}
+
 %description
 A library for bits of crypto UI and parsing etc.
 
@@ -50,32 +52,8 @@ This package also contains the gcr-viewer binary.
 Group:	System/Libraries
 Summary:	Library for integration with the gnome keyring system
 Requires:	%{name} = %{version}-%{release}
-Conflicts:	%{_lib}gnome-keyring < 2.29.4
-Obsoletes:	%{_lib}gcr-3_0 < 3.1.4
-Obsoletes:	%{_lib}gcr-3_1 < 3.1.91
 
 %description -n %{libname}
-This package contains shared libraries for Gnome keyring.
-
-%package -n %{libnamegck}
-Group:	System/Libraries
-Summary:	Library for integration with the gnome keyring system
-
-%description -n %{libnamegck}
-This package contains shared libraries for Gnome keyring.
-
-%package -n %{libnamebase}
-Group:	System/Libraries
-Summary:	Library for integration with the gnome keyring system
-
-%description -n %{libnamebase}
-This package contains shared libraries for Gnome keyring.
-
-%package -n %{libnameui}
-Group:	System/Libraries
-Summary:	Library for integration with the gnome keyring system
-
-%description -n %{libnameui}
 This package contains shared libraries for Gnome keyring.
 
 %package -n %{girname}
@@ -85,22 +63,11 @@ Group:	System/Libraries
 %description -n %{girname}
 GObject Introspection interface description for Gcr.
 
-%package -n %{girnamegck}
-Summary:	GObject Introspection interface description for Gck
-Group:	System/Libraries
-
-%description -n %{girnamegck}
-GObject Introspection interface description for Gck.
-
 %package -n %{devname}
 Group:	Development/C
 Summary:	Development files and headers for %{name}
 Requires:	%{libname} = %{version}-%{release}
-Requires:	%{libnamegck} = %{version}-%{release}
-Requires:	%{libnamebase} = %{version}-%{release}
-Requires:	%{libnameui} = %{version}-%{release}
 Requires:	%{girname} = %{version}-%{release}
-Requires:	%{girnamegck} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Conflicts:	%{_lib}-gnome-keyring-devel < 2.29.4
 
@@ -123,55 +90,32 @@ Thi package contains the development files and headers for %{name}.
 
 %files -f gcr-4.lang
 %doc README.md NEWS
-#{_bindir}/gcr-viewer
-#{_libexecdir}/gcr-prompter
-#{_libexecdir}/gcr-ssh-askpass
+%{_bindir}/gcr-viewer-gtk4
 %{_libexecdir}/gcr-ssh-agent
-#{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
-#{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
-#{_datadir}/GConf/gsettings/org.gnome.crypto.pgp*.convert
-#{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
-#{_datadir}/applications/gcr-viewer.desktop
-#{_datadir}/applications/gcr-prompter.desktop
-#{_datadir}/mime/packages/gcr-crypto-types.xml
-#{_datadir}/icons/hicolor/*/apps/gcr*.png
+%{_libexecdir}/gcr4-ssh-askpass
 %{_userunitdir}/gcr-ssh-agent.service
 %{_userunitdir}/gcr-ssh-agent.socket
 
-%files -n %{libnamegck}
-%{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
-
-%files -n %{girnamegck}
-%{_libdir}/girepository-1.0/Gck-%{api_gck}.typelib
-
-%files -n %{libnamebase}
-#{_libdir}/libgcr-base-%{api_gcr}.so.%{major_gcr}*
-
-%files -n %{libnameui}
-#{_libdir}/libgcr-ui-%{api_gcr}.so.%{major_gcr}*
-
 %files -n %{libname}
-#%{_libdir}/libgcr-%{api_gcr}.so.%{major_gcr}*
+%{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
+%{_libdir}/libgck-%{api_gck}.so.1.92.0
+%{_libdir}/libgcr-%{api_gck}.so.%{major_gck}*
+%{_libdir}/libgcr-%{api_gck}.so.%{version}
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gcr-%{api_gcr}.typelib
-#{_libdir}/girepository-1.0/GcrUi-%{api_gcr}.typelib
+%{_libdir}/girepository-1.0/Gck-%{api_gck}.typelib
 
 %files -n %{devname}
 %doc %{_datadir}/doc/gck*
 %doc %{_datadir}/doc/gcr*
 %{_libdir}/libgck-%{api_gck}.so
-#{_libdir}/libgcr-ui-%{api_gcr}.so
-#{_libdir}/libgcr-base-%{api_gcr}.so
 %{_includedir}/gck-%{api_gck}
 %{_includedir}/gcr-%{api_gcr}
 %{_libdir}/pkgconfig/gck-%{api_gck}.pc
 %{_libdir}/pkgconfig/gcr-%{api_gcr}.pc
-#{_libdir}/pkgconfig/gcr-base-%{api_gcr}.pc
-#{_libdir}/pkgconfig/gcr-ui-%{api_gcr}.pc
 %{_datadir}/gir-1.0/Gck-%{api_gck}.gir
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
-#_datadir}/gir-1.0/GcrUi-%{api_gcr}.gir
 %{_datadir}/vala/vapi/*
 
 %post
