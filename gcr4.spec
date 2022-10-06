@@ -107,6 +107,7 @@ Thi package contains the development files and headers for %{name}.
 %{_libexecdir}/gcr4-ssh-askpass
 %{_userunitdir}/gcr4-ssh-agent.service
 %{_userunitdir}/gcr4-ssh-agent.socket
+%{_datadir}/locale/*/LC_MESSAGES/gcr-4.mo
 
 %files -n %{libname}
 %{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
