@@ -98,9 +98,9 @@ Thi package contains the development files and headers for %{name}.
 %systemd_user_postun_with_restart gcr4-ssh-agent.service
 
 
-%find_lang gcr-4
-
-%files -f gcr-4.lang
+#%find_lang gcr-4
+#-f gcr-4.lang
+%files
 %doc README.md NEWS
 %{_bindir}/gcr-viewer-gtk4
 %{_libexecdir}/gcr-ssh-agent
