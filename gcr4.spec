@@ -148,7 +148,7 @@ Thi package contains the development files and headers for %{name}.
 #{_libdir}/libgcr-base-%{api_gcr}.so.%{major_gcr}*
 
 %files -n %{libnameui}
-%{_libdir}/libgcr-ui-%{api_gcr}.so.%{major_gcr}*
+#{_libdir}/libgcr-ui-%{api_gcr}.so.%{major_gcr}*
 
 %files -n %{libname}
 #%{_libdir}/libgcr-%{api_gcr}.so.%{major_gcr}*
