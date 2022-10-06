@@ -100,7 +100,7 @@ Thi package contains the development files and headers for %{name}.
 
 %find_lang gcr-%{api_gcr}
 
-%files %{api_gcr}.lang
+%files .lang
 %doc README.md NEWS
 %{_bindir}/gcr-viewer-gtk4
 %{_libexecdir}/gcr4-ssh-agent
