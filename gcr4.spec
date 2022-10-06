@@ -103,10 +103,10 @@ Thi package contains the development files and headers for %{name}.
 %files
 %doc README.md NEWS
 %{_bindir}/gcr-viewer-gtk4
-%{_libexecdir}/gcr-ssh-agent
+%{_libexecdir}/gcr4-ssh-agent
 %{_libexecdir}/gcr4-ssh-askpass
-%{_userunitdir}/gcr-ssh-agent.service
-%{_userunitdir}/gcr-ssh-agent.socket
+%{_userunitdir}/gcr4-ssh-agent.service
+%{_userunitdir}/gcr4-ssh-agent.socket
 
 %files -n %{libname}
 %{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
