@@ -1,0 +1,64 @@
+From 332ae94c11d623a123399a4c166b7323e2c3b177 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jani=20V=C3=A4limaa?= <wally@mageia.org>
+Date: Mon, 11 Jul 2022 20:58:28 +0300
+Subject: [PATCH] Make gcr4 parellel installable with gcr 3.41.x
+
+---
+ gcr/gcr-ssh-agent.service.in | 6 +++---
+ gcr/meson.build              | 5 +++--
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/gcr/gcr-ssh-agent.service.in b/gcr/gcr-ssh-agent.service.in
+index 2422fe2..086e020 100644
+--- a/gcr/gcr-ssh-agent.service.in
++++ b/gcr/gcr-ssh-agent.service.in
+@@ -1,15 +1,15 @@
+ [Unit]
+ Description=GCR ssh-agent wrapper
+ 
+-Requires=gcr-ssh-agent.socket
++Requires=gcr4-ssh-agent.socket
+ 
+ [Service]
+ Type=simple
+ StandardError=journal
+ Environment=SSH_AUTH_SOCK=%t/gcr/ssh
+-ExecStart=@libexecdir@/gcr-ssh-agent %t/gcr
++ExecStart=@libexecdir@/gcr4-ssh-agent %t/gcr
+ Restart=on-failure
+ 
+ [Install]
+-Also=gcr-ssh-agent.socket
++Also=gcr4-ssh-agent.socket
+ WantedBy=default.target
+diff --git a/gcr/meson.build b/gcr/meson.build
+index 414e5c2..c6386cb 100644
+--- a/gcr/meson.build
++++ b/gcr/meson.build
+@@ -229,7 +229,7 @@ if get_option('ssh_agent')
+     'gcr-ssh-agent-util.c',
+   ]
+ 
+-  gcr_ssh_agent = executable('gcr-ssh-agent',
++  gcr_ssh_agent = executable('gcr4-ssh-agent',
+     gcr_ssh_agent_lib_sources + [ 'gcr-ssh-agent.c' ],
+     dependencies: [ gcr_deps, gcr_dep, libsecret_dep, libsystemd_deps ],
+     c_args: [
+@@ -244,13 +244,14 @@ if get_option('ssh_agent')
+   if with_systemd
+     configure_file(
+       input: 'gcr-ssh-agent.service.in',
+-      output: '@BASENAME@',
++      output: 'gcr4-ssh-agent.service',
+       configuration: {
+         'libexecdir': gcr_prefix / get_option('libexecdir'),
+       },
+       install_dir: systemduserunitdir,
+     )
+     install_data('gcr-ssh-agent.socket',
++                 rename: 'gcr4-ssh-agent.socket',
+ 		 install_dir: systemduserunitdir)
+   endif
+ 
+-- 
+2.37.0
