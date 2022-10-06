@@ -22,6 +22,8 @@ License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcr/%{url_ver}/gcr-%{version}.tar.xz
+# add MGA patch
+Patch0:   0001-Make-gcr4-parellel-installable-with-gcr-3.41.x.patch
 
 BuildRequires:  meson
 BuildRequires:	intltool
@@ -86,6 +88,16 @@ Thi package contains the development files and headers for %{name}.
 %install
 %meson_install
 
+%post
+%systemd_user_post gcr4-ssh-agent.service
+
+%preun
+%systemd_user_preun gcr4-ssh-agent.service
+
+%postun
+%systemd_user_postun_with_restart gcr4-ssh-agent.service
+
+
 %find_lang gcr-4
 
 %files -f gcr-4.lang
@@ -118,9 +130,3 @@ Thi package contains the development files and headers for %{name}.
 %{_datadir}/gir-1.0/Gck-%{api_gck}.gir
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
 %{_datadir}/vala/vapi/*
-
-%post
-/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
-
-%postun
-/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
