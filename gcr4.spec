@@ -161,17 +161,17 @@ Thi package contains the development files and headers for %{name}.
 %doc %{_datadir}/doc/gck*
 %doc %{_datadir}/doc/gcr*
 %{_libdir}/libgck-%{api_gck}.so
-%{_libdir}/libgcr-ui-%{api_gcr}.so
-%{_libdir}/libgcr-base-%{api_gcr}.so
+#{_libdir}/libgcr-ui-%{api_gcr}.so
+#{_libdir}/libgcr-base-%{api_gcr}.so
 %{_includedir}/gck-%{api_gck}
 %{_includedir}/gcr-%{api_gcr}
 %{_libdir}/pkgconfig/gck-%{api_gck}.pc
 %{_libdir}/pkgconfig/gcr-%{api_gcr}.pc
-%{_libdir}/pkgconfig/gcr-base-%{api_gcr}.pc
-%{_libdir}/pkgconfig/gcr-ui-%{api_gcr}.pc
+#{_libdir}/pkgconfig/gcr-base-%{api_gcr}.pc
+#{_libdir}/pkgconfig/gcr-ui-%{api_gcr}.pc
 %{_datadir}/gir-1.0/Gck-%{api_gck}.gir
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
-%{_datadir}/gir-1.0/GcrUi-%{api_gcr}.gir
+#_datadir}/gir-1.0/GcrUi-%{api_gcr}.gir
 %{_datadir}/vala/vapi/*
 
 %post
