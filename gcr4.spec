@@ -10,7 +10,7 @@
 %define libnamebase	%mklibname gcr-base %{api_gcr} %{major_gcr}
 %define libnameui	%mklibname gcr-ui %{api_gcr} %{major_gcr}
 %define libnamegck	%mklibname gck %{api_gck} %{major_gck}
-%define girname		%mklibname gcr-gir %{major_gcr}
+%define girname		%mklibname gcr4-gir %{major_gcr}
 %define girnamegck	%mklibname gck4-gir %{major_gck}
 %define devname	%mklibname -d gcr4 
 
