@@ -110,8 +110,8 @@ Thi package contains the development files and headers for %{name}.
 %{_datadir}/locale/*/LC_MESSAGES/gcr-4.mo
 
 %files -n %{libname}
-%{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
-%{_libdir}/libgck-%{api_gck}.so.%{api_gck}*
+#{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
+#{_libdir}/libgck-%{api_gck}.so.%{api_gck}*
 
 #{_libdir}/libgcr-%{api_gcr}.so.%{major_gck}*
 #{_libdir}/libgcr-%{api_gcr}.so.%{version}
