@@ -23,8 +23,8 @@ index 2422fe2..086e020 100644
  Type=simple
  StandardError=journal
  Environment=SSH_AUTH_SOCK=%t/gcr/ssh
--ExecStart=@libexecdir@/gcr-ssh-agent %t/gcr
-+ExecStart=@libexecdir@/gcr4-ssh-agent %t/gcr
+-ExecStart=@libexecdir@/gcr-ssh-agent --base-dir %t/gcr
++ExecStart=@libexecdir@/gcr4-ssh-agent --base-dir %t/gcr
  Restart=on-failure
  
  [Install]
@@ -44,7 +44,7 @@ index 414e5c2..c6386cb 100644
      gcr_ssh_agent_lib_sources + [ 'gcr-ssh-agent.c' ],
      dependencies: [ gcr_deps, gcr_dep, libsecret_dep, libsystemd_deps ],
      c_args: [
-@@ -244,13 +244,14 @@ if get_option('ssh_agent')
+@@ -244,7 +244,7 @@ if get_option('ssh_agent')
    if with_systemd
      configure_file(
        input: 'gcr-ssh-agent.service.in',
@@ -53,12 +53,15 @@ index 414e5c2..c6386cb 100644
        configuration: {
          'libexecdir': gcr_prefix / get_option('libexecdir'),
        },
-       install_dir: systemduserunitdir,
-     )
-     install_data('gcr-ssh-agent.socket',
-+                 rename: 'gcr4-ssh-agent.socket',
- 		 install_dir: systemduserunitdir)
-   endif
- 
+@@ -258,7 +258,7 @@ if get_option('ssh_agent')
+     endif
+     configure_file(
+       input: 'gcr-ssh-agent.socket.in',
+-      output: '@BASENAME@',
++      output: 'gcr4-ssh-agent.socket',
+       configuration: {
+         'systemctl': systemctl,
+       },
 -- 
 2.37.0
+
