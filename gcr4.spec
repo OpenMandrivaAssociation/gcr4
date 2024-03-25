@@ -16,12 +16,12 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr4
-Version:	4.1.0
-Release:	3
+Version:	4.2.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
-Url:		http://www.gnome.org/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcr/%{url_ver}/gcr-%{version}.tar.xz
+Url:		https://www.gnome.org/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/gcr/%{url_ver}/gcr-%{version}.tar.xz
 # add MGA patch
 Patch0:   0001-Make-gcr4-parellel-installable-with-gcr-3.41.x.patch
 
