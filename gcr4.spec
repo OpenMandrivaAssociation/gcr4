@@ -16,7 +16,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr4
-Version:	4.2.1
+Version:	4.3.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -80,9 +80,7 @@ Thi package contains the development files and headers for %{name}.
 %autosetup -n gcr-%{version} -p1
 
 %build
-
 %meson
-
 %meson_build
 
 %install
