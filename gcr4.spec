@@ -16,7 +16,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr4
-Version:	4.3.0
+Version:	4.3.91
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
