@@ -17,7 +17,7 @@
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr4
 Version:	4.4.0.1
-Release:	3
+Release:	4
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
@@ -43,12 +43,19 @@ BuildRequires:	xsltproc
 BuildRequires:	vala-devel
 #Conflicts:	gnome-keyring < 3.3.1
 
+# Just to make sure nothing breaks on updates -- this should probably be a Suggests: instead
+Requires:	(%{name} if gnome-shell)
+
 Requires: %{libname} = %{version}-%{release}
 
 %description
 A library for bits of crypto UI and parsing etc.
 
-This package also contains the gcr-viewer binary.
+%package viewer
+Summary:	Viewer for crypto related files
+
+%description viewer
+Viewer for crypto related files
 
 %package -n %{libname}
 Group:	System/Libraries
@@ -100,12 +107,14 @@ Thi package contains the development files and headers for %{name}.
 
 %files
 %doc README.md NEWS
-%{_bindir}/gcr-viewer-gtk4
 %{_libexecdir}/gcr4-ssh-agent
 %{_libexecdir}/gcr4-ssh-askpass
 %{_userunitdir}/gcr4-ssh-agent.service
 %{_userunitdir}/gcr4-ssh-agent.socket
 %{_datadir}/locale/*/LC_MESSAGES/gcr-4.mo
+
+%files viewer
+%{_bindir}/gcr-viewer-gtk4
 
 %files -n %{libname}
 %{_libdir}/libgck-%{api_gck}.so.%{api_gck}*
